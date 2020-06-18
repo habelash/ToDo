@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-do</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="{% static 'assets/images/todo.png' %}" type="images/png" sizes="16x16">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/responsice.css' %}">
+</head>
+<body>
+  <header>
+    <div class="header">
+      <span class="name">To-Do List</span>
+    </div>
+  </header>
+  <div class="content">
+      <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Sl.No</th>
+              <th scope="col">Title</th>
+              <th scope="col">Discription</th>
+              <th scope="col">Deadline</th>
+              <th scope="col">Status</th>
+            </tr>
+            <tbody>
+                {% for work in works %}
+                 <tr>
+                  <th scope="row">{{ work.id }}</th>
+                  <td>{{ work.title }}</td>
+                  <td>{{ work.discription }}</td>
+                  <td>{{ work.deadline }}</td>
+                 <td>
+                     <form action="{% url 'index' %}" method="post">{% csrf_token %}
+                      <input type="checkbox" name="status" >
+                    </form>
+                 </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </thead>
+      </table>
+    <form class="details" action="{% url 'index' %}" method="post">{% csrf_token %}
+      <input type="text" id="title" name="title" placeholder="Title" required>
+      <input type="text" id="disc" name="disc" placeholder="Discription" required>
+      <input type="date" id="deadline" name="deadline" min="2020-05-10" required>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+</html>

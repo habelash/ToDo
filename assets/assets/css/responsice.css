@@ -1,0 +1,25 @@
+@media only screen and (max-width: 600px) {
+  .header{
+    height:50;
+    width: auto;
+    background-color:#f2f2f2;
+    text-align: center;
+
+  }
+  .name{
+    font-family: 'Libre Baskerville', serif;
+    font-size: 15px;
+    font-weight: bolder;
+  }
+  .content{
+    margin: 2px 0 0 2%;
+    padding: 2px;
+    height: auto;
+    width: auto;
+    background-color: #f2f2f2;
+  }
+  .details{
+    margin: 10px 10px;
+    font-family: 'Libre Baskerville', serif;
+  }
+}
